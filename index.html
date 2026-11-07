@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLD Interativo • Aprenda Praticando (ASD-STE100)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra Lateral de Navegação e Controle de Conhecimento -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-title">
+        <div class="brand-icon">01</div>
+        <div>
+          <div>SLD Interativo</div>
+          <div style="font-size:0.74rem; color:var(--text-muted); font-weight:500;">Sistemas Lógicos Digitais</div>
+        </div>
+      </div>
+      <div class="ste-pill" onclick="window.SLD_APP.openSteModal()" title="Clique para ver como aplicamos o padrão ASD-STE100">
+        <span>📘 Padrão ASD-STE100 Didático</span>
+      </div>
+    </div>
+
+    <div class="sidebar-progress-box">
+      <div class="progress-label-row">
+        <span>Domínio Total (Mód. I e II)</span>
+        <span id="sidebar-pct-text">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="sidebar-pct-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+    <div class="sidebar-footer">
+      <button class="btn btn-sm btn-secondary" style="flex:1;" id="theme-toggle-btn" onclick="window.SLD_APP.toggleTheme()">
+        ☀️ Modo Claro
+      </button>
+      <button class="btn btn-sm btn-secondary" title="Zerar progresso salvo" onclick="window.SLD_APP.resetProgress()">
+        🔄 Resetar
+      </button>
+    </div>
+  </aside>
+
+  <!-- Área Principal -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">
+          ☰ Menu
+        </button>
+        <span style="font-weight:700; font-size:0.92rem; color:var(--text-secondary);">
+          Dom Helder • Prof. Ricardo Martins Ramos (Módulo I + Módulo II Completos)
+        </span>
+      </div>
+      <div class="topbar-stats" id="topbar-stats"></div>
+    </header>
+
+    <main class="content-area" id="main-content-area"></main>
+  </div>
+
+  <!-- Modal Explicativo sobre o ASD-STE100 Didático -->
+  <div class="modal-backdrop" id="ste-modal" onclick="if(event.target===this) window.SLD_APP.closeSteModal()">
+    <div class="modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+        <h2 style="font-size:1.3rem; font-weight:800; color:var(--ste-badge);">
+          O que é o método ASD-STE100 aplicado a Sistemas Lógicos Digitais?
+        </h2>
+        <button class="btn btn-sm btn-secondary" onclick="window.SLD_APP.closeSteModal()">✕ Fechar</button>
+      </div>
+      <p style="color:var(--text-secondary); font-size:0.92rem; margin-bottom:14px;">
+        O <strong>ASD-STE100 (Simplified Technical English)</strong> é a norma internacional criada na engenharia aeroespacial para tornar manuais técnicos impossíveis de serem mal interpretados. Nesta plataforma, adaptamos suas 4 regras de ouro para o português didático:
+      </p>
+      <div class="ste-steps">
+        <div class="ste-step-item">
+          <div class="step-num">1</div>
+          <div>
+            <strong>Frases Curtas (Máx. 20 palavras por instrução):</strong><br>
+            <span style="font-size:0.88rem; color:var(--text-secondary);">Cortamos textos longos e teóricos. Cada linha entrega apenas um único conceito testável.</span>
+          </div>
+        </div>
+        <div class="ste-step-item">
+          <div class="step-num">2</div>
+          <div>
+            <strong>Voz Ativa e Verbos de Ação no Imperativo:</strong><br>
+            <span style="font-size:0.88rem; color:var(--text-secondary);">Em vez de explicações passivas abstratas, você recebe comandos diretos: <em>"Divida por 2", "Some os pesos onde o bit é 1", "Quebre a barra e troque o sinal"</em>.</span>
+          </div>
+        </div>
+        <div class="ste-step-item">
+          <div class="step-num">3</div>
+          <div>
+            <strong>Uma Palavra = Um Significado (Vocabulário Controlado):</strong><br>
+            <span style="font-size:0.88rem; color:var(--text-secondary);">Destacamos lado a lado as diferenças que mais confundem: <strong>Conversão Binária vs. Codificação BCD</strong>, <strong>Mintermo vs. Maxtermo</strong>, <strong>Síncrono vs. Assíncrono</strong>.</span>
+          </div>
+        </div>
+        <div class="ste-step-item">
+          <div class="step-num">4</div>
+          <div>
+            <strong>Tradutor "Como está no Slide" → "Como funciona na prática":</strong><br>
+            <span style="font-size:0.88rem; color:var(--text-secondary);">Todas as 12 unidades mostram a frase original do PDF do professor e a tradução imediata em STE-100, seguida de laboratório interativo e questões resolvidas!</span>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:right; margin-top:16px;">
+        <button class="btn btn-primary" onclick="window.SLD_APP.closeSteModal()">Entendi, vamos praticar!</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data-content.js"></script>
+  <script src="resumo-mod2.js"></script>
+  <script src="lista-a5.js"></script>
+  <script src="logisim-guide.js"></script>
+  <script src="labs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

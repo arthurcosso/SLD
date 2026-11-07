@@ -1,0 +1,11 @@
+# Temporary and backup files
+*.bak
+*.tmp
+temp_*
+scratch/
+*.log
+
+# OS generated
+.DS_Store
+Thumbs.db
+desktop.ini

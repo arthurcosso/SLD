@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="2.7.1" version="1.0">
+  This file is intended to be loaded by Logisim (http://www.cburch.com/logisim/).
+  <lib desc="#Wiring" name="0"/>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#Memory" name="4"/>
+  <lib desc="#I/O" name="5"/>
+  <lib desc="#Base" name="6">
+    <tool name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+  </lib>
+  <main name="1_Codificador_BCD"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool lib="6" map="Button2" name="Menu Tool"/>
+    <tool lib="6" map="Button3" name="Menu Tool"/>
+    <tool lib="6" map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool lib="6" name="Poke Tool"/>
+    <tool lib="6" name="Edit Tool"/>
+    <tool lib="6" name="Text Tool">
+      <a name="text" val=""/>
+      <a name="font" val="SansSerif plain 12"/>
+      <a name="halign" val="center"/>
+      <a name="valign" val="base"/>
+    </tool>
+    <sep/>
+    <tool lib="0" name="Pin">
+      <a name="tristate" val="false"/>
+    </tool>
+    <tool lib="0" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="labelloc" val="east"/>
+    </tool>
+    <tool lib="1" name="NOT Gate"/>
+    <tool lib="1" name="AND Gate"/>
+    <tool lib="1" name="OR Gate"/>
+  </toolbar>
+
+  <!-- ===================================================================== -->
+  <!-- CIRCUITO 1: CODIFICADOR BCD (DECIMAL I0..I9 -> BCD A3 A2 A1 A0)       -->
+  <!-- ===================================================================== -->
+  <circuit name="1_Codificador_BCD">
+    <a name="circuit" val="1_Codificador_BCD"/>
+    <a name="clabel" val=""/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <comp lib="6" loc="(260,30)" name="Text">
+      <a name="text" val="1. CODIFICADOR BCD (Decimal I0..I9 para BCD A3 A2 A1 A0)"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <!-- Entradas I0 a I9 -->
+    <comp lib="0" loc="(80,70)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I0"/></comp>
+    <comp lib="0" loc="(80,100)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I1"/></comp>
+    <comp lib="0" loc="(80,130)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I2"/></comp>
+    <comp lib="0" loc="(80,160)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I3"/></comp>
+    <comp lib="0" loc="(80,190)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I4"/></comp>
+    <comp lib="0" loc="(80,220)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I5"/></comp>
+    <comp lib="0" loc="(80,250)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I6"/></comp>
+    <comp lib="0" loc="(80,280)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I7"/></comp>
+    <comp lib="0" loc="(80,310)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I8"/></comp>
+    <comp lib="0" loc="(80,340)" name="Pin"><a name="tristate" val="false"/><a name="label" val="I9"/></comp>
+    <!-- Portas OR -->
+    <comp lib="1" loc="(320,100)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="A3=I8+I9"/></comp>
+    <comp lib="1" loc="(320,180)" name="OR Gate"><a name="inputs" val="4"/><a name="label" val="A2=I4+I5+I6+I7"/></comp>
+    <comp lib="1" loc="(320,260)" name="OR Gate"><a name="inputs" val="4"/><a name="label" val="A1=I2+I3+I6+I7"/></comp>
+    <comp lib="1" loc="(320,340)" name="OR Gate"><a name="inputs" val="5"/><a name="label" val="A0=I1+I3+I5+I7+I9"/></comp>
+    <!-- Saídas BCD -->
+    <comp lib="0" loc="(410,100)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="A3 (8)"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(410,180)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="A2 (4)"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(410,260)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="A1 (2)"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(410,340)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="A0 (1)"/><a name="labelloc" val="east"/></comp>
+    <!-- Fios de Saída -->
+    <wire from="(320,100)" to="(410,100)"/>
+    <wire from="(320,180)" to="(410,180)"/>
+    <wire from="(320,260)" to="(410,260)"/>
+    <wire from="(320,340)" to="(410,340)"/>
+    <!-- Ligações I8 e I9 em A3 -->
+    <wire from="(80,310)" to="(230,310)"/>
+    <wire from="(230,90)" to="(230,310)"/>
+    <wire from="(230,90)" to="(270,90)"/>
+    <wire from="(80,340)" to="(240,340)"/>
+    <wire from="(240,110)" to="(240,340)"/>
+    <wire from="(240,110)" to="(270,110)"/>
+    <wire from="(240,340)" to="(240,360)"/>
+    <wire from="(240,360)" to="(270,360)"/>
+    <!-- Ligações I4, I5, I6, I7 em A2 -->
+    <wire from="(80,190)" to="(190,190)"/>
+    <wire from="(190,160)" to="(190,190)"/>
+    <wire from="(190,160)" to="(270,160)"/>
+    <wire from="(80,220)" to="(200,220)"/>
+    <wire from="(200,170)" to="(200,220)"/>
+    <wire from="(200,170)" to="(270,170)"/>
+    <wire from="(200,220)" to="(200,340)"/>
+    <wire from="(200,340)" to="(270,340)"/>
+    <wire from="(80,250)" to="(210,250)"/>
+    <wire from="(210,190)" to="(210,250)"/>
+    <wire from="(210,190)" to="(270,190)"/>
+    <wire from="(210,250)" to="(210,270)"/>
+    <wire from="(210,270)" to="(270,270)"/>
+    <wire from="(80,280)" to="(220,280)"/>
+    <wire from="(220,200)" to="(220,280)"/>
+    <wire from="(220,200)" to="(270,200)"/>
+    <wire from="(220,280)" to="(270,280)"/>
+    <wire from="(220,280)" to="(220,350)"/>
+    <wire from="(220,350)" to="(270,350)"/>
+    <!-- Ligações I2, I3 em A1 e I1, I3 em A0 -->
+    <wire from="(80,130)" to="(170,130)"/>
+    <wire from="(170,130)" to="(170,240)"/>
+    <wire from="(170,240)" to="(270,240)"/>
+    <wire from="(80,160)" to="(180,160)"/>
+    <wire from="(180,160)" to="(180,250)"/>
+    <wire from="(180,250)" to="(270,250)"/>
+    <wire from="(180,250)" to="(180,330)"/>
+    <wire from="(180,330)" to="(270,330)"/>
+    <wire from="(80,100)" to="(160,100)"/>
+    <wire from="(160,100)" to="(160,320)"/>
+    <wire from="(160,320)" to="(270,320)"/>
+  </circuit>
+
+  <!-- ===================================================================== -->
+  <!-- CIRCUITO 5A: MEIO-SOMADOR (Half Adder - 2 Portas)                     -->
+  <!-- ===================================================================== -->
+  <circuit name="5A_Meio_Somador">
+    <a name="circuit" val="5A_Meio_Somador"/>
+    <a name="clabel" val="HA"/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif plain 12"/>
+    <comp lib="6" loc="(250,30)" name="Text">
+      <a name="text" val="5A. MEIO-SOMADOR (Half Adder: S = A xor B, C = A and B)"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <comp lib="0" loc="(80,70)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A"/></comp>
+    <comp lib="0" loc="(80,110)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B"/></comp>
+    <comp lib="1" loc="(220,90)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR"/></comp>
+    <comp lib="1" loc="(210,160)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND"/></comp>
+    <comp lib="0" loc="(300,90)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="Soma (S)"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(300,160)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="Carry (C)"/><a name="labelloc" val="east"/></comp>
+    <wire from="(80,70)" to="(120,70)"/>
+    <wire from="(120,70)" to="(160,70)"/>
+    <wire from="(120,70)" to="(120,140)"/>
+    <wire from="(120,140)" to="(160,140)"/>
+    <wire from="(80,110)" to="(140,110)"/>
+    <wire from="(140,110)" to="(160,110)"/>
+    <wire from="(140,110)" to="(140,180)"/>
+    <wire from="(140,180)" to="(160,180)"/>
+    <wire from="(220,90)" to="(300,90)"/>
+    <wire from="(210,160)" to="(300,160)"/>
+  </circuit>
+
+  <!-- ===================================================================== -->
+  <!-- CIRCUITO 5B: SOMADOR COMPLETO DE 1 BIT (Full Adder - 5 Portas)        -->
+  <!-- ===================================================================== -->
+  <circuit name="5B_Somador_Completo_1bit">
+    <a name="circuit" val="5B_Somador_Completo_1bit"/>
+    <a name="clabel" val="FA_1bit"/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif bold 12"/>
+    <comp lib="6" loc="(310,30)" name="Text">
+      <a name="text" val="5B. SOMADOR COMPLETO DE 1 BIT (Full Adder: 2 XOR, 2 AND, 1 OR)"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+    <!-- Entradas A, B, Cin -->
+    <comp lib="0" loc="(80,70)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A"/></comp>
+    <comp lib="0" loc="(80,110)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B"/></comp>
+    <comp lib="0" loc="(80,170)" name="Pin"><a name="tristate" val="false"/><a name="label" val="Cin"/></comp>
+
+    <!-- 1. XOR 1 (loc=220,90 -> entradas em 160,70 e 160,110) -->
+    <comp lib="1" loc="(220,90)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR1"/></comp>
+    <!-- 2. XOR 2 (loc=360,110 -> entradas em 300,90 e 300,130) -->
+    <comp lib="1" loc="(360,110)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR2"/></comp>
+    <!-- 3. AND 1 (loc=350,190 -> entradas em 300,170 e 300,210) -->
+    <comp lib="1" loc="(350,190)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND1"/></comp>
+    <!-- 4. AND 2 (loc=350,270 -> entradas em 300,250 e 300,290) -->
+    <comp lib="1" loc="(350,270)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND2"/></comp>
+    <!-- 5. OR 1 (loc=460,230 -> entradas em 410,210 e 410,250) -->
+    <comp lib="1" loc="(460,230)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="OR1"/></comp>
+
+    <!-- Saídas S e Cout -->
+    <comp lib="0" loc="(520,110)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="S (Soma)"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(520,230)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="Cout"/><a name="labelloc" val="east"/></comp>
+
+    <!-- Fios de A (para XOR1 em 160,70 e AND2 em 300,250) -->
+    <wire from="(80,70)" to="(120,70)"/>
+    <wire from="(120,70)" to="(160,70)"/>
+    <wire from="(120,70)" to="(120,250)"/>
+    <wire from="(120,250)" to="(300,250)"/>
+
+    <!-- Fios de B (para XOR1 em 160,110 e AND2 em 300,290) -->
+    <wire from="(80,110)" to="(140,110)"/>
+    <wire from="(140,110)" to="(160,110)"/>
+    <wire from="(140,110)" to="(140,290)"/>
+    <wire from="(140,290)" to="(300,290)"/>
+
+    <!-- Fio Roxo: saída de XOR1 (220,90) para XOR2 (300,90) e AND1 (300,170) -->
+    <wire from="(220,90)" to="(260,90)"/>
+    <wire from="(260,90)" to="(300,90)"/>
+    <wire from="(260,90)" to="(260,170)"/>
+    <wire from="(260,170)" to="(300,170)"/>
+
+    <!-- Fios de Cin (80,170) para XOR2 (300,130) e AND1 (300,210) -->
+    <wire from="(80,170)" to="(280,170)"/>
+    <wire from="(280,130)" to="(280,170)"/>
+    <wire from="(280,130)" to="(300,130)"/>
+    <wire from="(280,170)" to="(280,210)"/>
+    <wire from="(280,210)" to="(300,210)"/>
+
+    <!-- Saída de XOR2 para S -->
+    <wire from="(360,110)" to="(520,110)"/>
+
+    <!-- Saídas de AND1 (350,190) e AND2 (350,270) para OR1 (410,210 e 410,250) -->
+    <wire from="(350,190)" to="(380,190)"/>
+    <wire from="(380,190)" to="(380,210)"/>
+    <wire from="(380,210)" to="(410,210)"/>
+    <wire from="(350,270)" to="(380,270)"/>
+    <wire from="(380,250)" to="(380,270)"/>
+    <wire from="(380,250)" to="(410,250)"/>
+
+    <!-- Saída de OR1 para Cout -->
+    <wire from="(460,230)" to="(520,230)"/>
+  </circuit>
+
+  <!-- ===================================================================== -->
+  <!-- CIRCUITO 5C: SOMADOR COMPLETO DE 4 BITS (4 Andares em Cascata)        -->
+  <!-- ===================================================================== -->
+  <circuit name="5C_Somador_Completo_4bits">
+    <a name="circuit" val="5C_Somador_Completo_4bits"/>
+    <a name="clabel" val="FA_4bits"/>
+    <a name="clabelup" val="east"/>
+    <a name="clabelfont" val="SansSerif bold 12"/>
+    <comp lib="6" loc="(310,30)" name="Text">
+      <a name="text" val="5C. SOMADOR COMPLETO DE 4 BITS (4 Andares: Cout de cima entra no Cin de baixo)"/>
+      <a name="font" val="SansSerif bold 14"/>
+    </comp>
+
+    <!-- ================= ANDAR 0 (Bit 0 - LSB) ================= -->
+    <comp lib="0" loc="(80,70)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A0"/></comp>
+    <comp lib="0" loc="(80,110)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B0"/></comp>
+    <comp lib="0" loc="(80,170)" name="Pin"><a name="tristate" val="false"/><a name="label" val="Cin0"/></comp>
+    <comp lib="1" loc="(220,90)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR1_0"/></comp>
+    <comp lib="1" loc="(360,110)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR2_0"/></comp>
+    <comp lib="1" loc="(350,190)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND1_0"/></comp>
+    <comp lib="1" loc="(350,270)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND2_0"/></comp>
+    <comp lib="1" loc="(460,230)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="OR1_0"/></comp>
+    <comp lib="0" loc="(520,110)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="S0"/><a name="labelloc" val="east"/></comp>
+    <wire from="(80,70)" to="(120,70)"/>
+    <wire from="(120,70)" to="(160,70)"/>
+    <wire from="(120,70)" to="(120,250)"/>
+    <wire from="(120,250)" to="(300,250)"/>
+    <wire from="(80,110)" to="(140,110)"/>
+    <wire from="(140,110)" to="(160,110)"/>
+    <wire from="(140,110)" to="(140,290)"/>
+    <wire from="(140,290)" to="(300,290)"/>
+    <wire from="(220,90)" to="(260,90)"/>
+    <wire from="(260,90)" to="(300,90)"/>
+    <wire from="(260,90)" to="(260,170)"/>
+    <wire from="(260,170)" to="(300,170)"/>
+    <wire from="(80,170)" to="(280,170)"/>
+    <wire from="(280,130)" to="(280,170)"/>
+    <wire from="(280,130)" to="(300,130)"/>
+    <wire from="(280,170)" to="(280,210)"/>
+    <wire from="(280,210)" to="(300,210)"/>
+    <wire from="(360,110)" to="(520,110)"/>
+    <wire from="(350,190)" to="(380,190)"/>
+    <wire from="(380,190)" to="(380,210)"/>
+    <wire from="(380,210)" to="(410,210)"/>
+    <wire from="(350,270)" to="(380,270)"/>
+    <wire from="(380,250)" to="(380,270)"/>
+    <wire from="(380,250)" to="(410,250)"/>
+    <!-- Fio Cout0 (460,230) descendo para Cin1 (80,430) -->
+    <wire from="(460,230)" to="(480,230)"/>
+    <wire from="(480,230)" to="(480,310)"/>
+    <wire from="(80,310)" to="(480,310)"/>
+    <wire from="(80,310)" to="(80,430)"/>
+
+    <!-- ================= ANDAR 1 (Bit 1) ================= -->
+    <comp lib="0" loc="(80,330)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A1"/></comp>
+    <comp lib="0" loc="(80,370)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B1"/></comp>
+    <comp lib="1" loc="(220,350)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR1_1"/></comp>
+    <comp lib="1" loc="(360,370)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR2_1"/></comp>
+    <comp lib="1" loc="(350,450)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND1_1"/></comp>
+    <comp lib="1" loc="(350,530)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND2_1"/></comp>
+    <comp lib="1" loc="(460,490)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="OR1_1"/></comp>
+    <comp lib="0" loc="(520,370)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="S1"/><a name="labelloc" val="east"/></comp>
+    <wire from="(80,330)" to="(120,330)"/>
+    <wire from="(120,330)" to="(160,330)"/>
+    <wire from="(120,330)" to="(120,510)"/>
+    <wire from="(120,510)" to="(300,510)"/>
+    <wire from="(80,370)" to="(140,370)"/>
+    <wire from="(140,370)" to="(160,370)"/>
+    <wire from="(140,370)" to="(140,550)"/>
+    <wire from="(140,550)" to="(300,550)"/>
+    <wire from="(220,350)" to="(260,350)"/>
+    <wire from="(260,350)" to="(300,350)"/>
+    <wire from="(260,350)" to="(260,430)"/>
+    <wire from="(260,430)" to="(300,430)"/>
+    <wire from="(80,430)" to="(280,430)"/>
+    <wire from="(280,390)" to="(280,430)"/>
+    <wire from="(280,390)" to="(300,390)"/>
+    <wire from="(280,430)" to="(280,470)"/>
+    <wire from="(280,470)" to="(300,470)"/>
+    <wire from="(360,370)" to="(520,370)"/>
+    <wire from="(350,450)" to="(380,450)"/>
+    <wire from="(380,450)" to="(380,470)"/>
+    <wire from="(380,470)" to="(410,470)"/>
+    <wire from="(350,530)" to="(380,530)"/>
+    <wire from="(380,510)" to="(380,530)"/>
+    <wire from="(380,510)" to="(410,510)"/>
+    <!-- Fio Cout1 (460,490) descendo para Cin2 (80,690) -->
+    <wire from="(460,490)" to="(480,490)"/>
+    <wire from="(480,490)" to="(480,570)"/>
+    <wire from="(80,570)" to="(480,570)"/>
+    <wire from="(80,570)" to="(80,690)"/>
+
+    <!-- ================= ANDAR 2 (Bit 2) ================= -->
+    <comp lib="0" loc="(80,590)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A2"/></comp>
+    <comp lib="0" loc="(80,630)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B2"/></comp>
+    <comp lib="1" loc="(220,610)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR1_2"/></comp>
+    <comp lib="1" loc="(360,630)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR2_2"/></comp>
+    <comp lib="1" loc="(350,710)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND1_2"/></comp>
+    <comp lib="1" loc="(350,790)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND2_2"/></comp>
+    <comp lib="1" loc="(460,750)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="OR1_2"/></comp>
+    <comp lib="0" loc="(520,630)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="S2"/><a name="labelloc" val="east"/></comp>
+    <wire from="(80,590)" to="(120,590)"/>
+    <wire from="(120,590)" to="(160,590)"/>
+    <wire from="(120,590)" to="(120,770)"/>
+    <wire from="(120,770)" to="(300,770)"/>
+    <wire from="(80,630)" to="(140,630)"/>
+    <wire from="(140,630)" to="(160,630)"/>
+    <wire from="(140,630)" to="(140,810)"/>
+    <wire from="(140,810)" to="(300,810)"/>
+    <wire from="(220,610)" to="(260,610)"/>
+    <wire from="(260,610)" to="(300,610)"/>
+    <wire from="(260,610)" to="(260,690)"/>
+    <wire from="(260,690)" to="(300,690)"/>
+    <wire from="(80,690)" to="(280,690)"/>
+    <wire from="(280,650)" to="(280,690)"/>
+    <wire from="(280,650)" to="(300,650)"/>
+    <wire from="(280,690)" to="(280,730)"/>
+    <wire from="(280,730)" to="(300,730)"/>
+    <wire from="(360,630)" to="(520,630)"/>
+    <wire from="(350,710)" to="(380,710)"/>
+    <wire from="(380,710)" to="(380,730)"/>
+    <wire from="(380,730)" to="(410,730)"/>
+    <wire from="(350,790)" to="(380,790)"/>
+    <wire from="(380,770)" to="(380,790)"/>
+    <wire from="(380,770)" to="(410,770)"/>
+    <!-- Fio Cout2 (460,750) descendo para Cin3 (80,950) -->
+    <wire from="(460,750)" to="(480,750)"/>
+    <wire from="(480,750)" to="(480,830)"/>
+    <wire from="(80,830)" to="(480,830)"/>
+    <wire from="(80,830)" to="(80,950)"/>
+
+    <!-- ================= ANDAR 3 (Bit 3 - MSB) ================= -->
+    <comp lib="0" loc="(80,850)" name="Pin"><a name="tristate" val="false"/><a name="label" val="A3"/></comp>
+    <comp lib="0" loc="(80,890)" name="Pin"><a name="tristate" val="false"/><a name="label" val="B3"/></comp>
+    <comp lib="1" loc="(220,870)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR1_3"/></comp>
+    <comp lib="1" loc="(360,890)" name="XOR Gate"><a name="inputs" val="2"/><a name="label" val="XOR2_3"/></comp>
+    <comp lib="1" loc="(350,970)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND1_3"/></comp>
+    <comp lib="1" loc="(350,1050)" name="AND Gate"><a name="inputs" val="2"/><a name="label" val="AND2_3"/></comp>
+    <comp lib="1" loc="(460,1010)" name="OR Gate"><a name="inputs" val="2"/><a name="label" val="OR1_3"/></comp>
+    <comp lib="0" loc="(520,890)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="S3"/><a name="labelloc" val="east"/></comp>
+    <comp lib="0" loc="(520,1010)" name="Pin"><a name="facing" val="west"/><a name="output" val="true"/><a name="label" val="Cout_Final"/><a name="labelloc" val="east"/></comp>
+    <wire from="(80,850)" to="(120,850)"/>
+    <wire from="(120,850)" to="(160,850)"/>
+    <wire from="(120,850)" to="(120,1030)"/>
+    <wire from="(120,1030)" to="(300,1030)"/>
+    <wire from="(80,890)" to="(140,890)"/>
+    <wire from="(140,890)" to="(160,890)"/>
+    <wire from="(140,890)" to="(140,1070)"/>
+    <wire from="(140,1070)" to="(300,1070)"/>
+    <wire from="(220,870)" to="(260,870)"/>
+    <wire from="(260,870)" to="(300,870)"/>
+    <wire from="(260,870)" to="(260,950)"/>
+    <wire from="(260,950)" to="(300,950)"/>
+    <wire from="(80,950)" to="(280,950)"/>
+    <wire from="(280,910)" to="(280,950)"/>
+    <wire from="(280,910)" to="(300,910)"/>
+    <wire from="(280,950)" to="(280,990)"/>
+    <wire from="(280,990)" to="(300,990)"/>
+    <wire from="(360,890)" to="(520,890)"/>
+    <wire from="(350,970)" to="(380,970)"/>
+    <wire from="(380,970)" to="(380,990)"/>
+    <wire from="(380,990)" to="(410,990)"/>
+    <wire from="(350,1050)" to="(380,1050)"/>
+    <wire from="(380,1030)" to="(380,1050)"/>
+    <wire from="(380,1030)" to="(410,1030)"/>
+    <wire from="(460,1010)" to="(520,1010)"/>
+  </circuit>
+</project>

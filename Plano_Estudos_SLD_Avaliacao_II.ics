@@ -1,0 +1,73 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//SLD Interativo ASD-STE100//Sprint Intensivo 4 Dias Avaliacao II//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Sprint SLD (03/11 a 07/11) - Avaliacao II (30 pts)
+X-WR-TIMEZONE:America/Sao_Paulo
+BEGIN:VEVENT
+UID:sld-sprint4d-d1-20261103@sld.local
+DTSTAMP:20261102T140000Z
+DTSTART;TZID=America/Sao_Paulo:20261103T193000
+DTEND;TZID=America/Sao_Paulo:20261103T210000
+SUMMARY:[SLD Dia 1/4] Módulo I Parte 1: Sinais, Conversão 46,6875, BCD e Gray (Unids. 1, 2 e 3)
+DESCRIPTION:Sprint Intensivo ASD-STE100 — Avaliação II (30 pts):\n1. Bloco 1 (25m) - Unidade 1 + Lab 1: Faixa TTL (0-0,8V=0; 2-5V=1; 0,8-2V=Inválido) e 4 sinais.\n2. Bloco 2 (35m) - Unidade 2 + Lab 2: Conversão fracionária no papel (46,6875 = 101110,1011).\n3. Bloco 3 (30m) - Unidade 3 + Lab 2: Converter 13 (1101) vs Codificar 13 em BCD (0001 0011), Gray e 2^n >= M.\n4. Meta: Acertar as 12 questões das Unidades 1, 2 e 3.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete SLD: Dia 1 do Sprint Intensivo (Unidades 1, 2 e 3)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sld-sprint4d-d2-20261104@sld.local
+DTSTAMP:20261102T140000Z
+DTSTART;TZID=America/Sao_Paulo:20261104T193000
+DTEND;TZID=America/Sao_Paulo:20261104T210500
+SUMMARY:[SLD Dia 2/4] Fechamento Módulo I: Compl. de 2, Soma BCD (+6), Portas e DeMorgan (Unids. 4, 5 e 6)
+DESCRIPTION:Sprint Intensivo ASD-STE100 — Avaliação II (30 pts):\n1. Bloco 1 (30m) - Unidade 4 + Lab 2: Complemento de 2 (inverte + 1), Soma BCD (+6 = 0110) e Paridade.\n2. Bloco 2 (30m) - Unidade 5 + Lab 3: Precedência (NOT -> AND -> OR) e Tabela-Verdade de x = (A+B)(B'+C).\n3. Bloco 3 (35m) - Unidade 6 + Lab 3: Teoremas de DeMorgan e atalhos (A+AB=A, A+A'B=A+B).\n4. Meta: Fechar 100% do Módulo I (Unidades 1 a 6 verdes!).
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete SLD: Dia 2 do Sprint Intensivo (Unidades 4, 5 e 6)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sld-sprint4d-d3-20261105@sld.local
+DTSTAMP:20261102T140000Z
+DTSTART;TZID=America/Sao_Paulo:20261105T193000
+DTEND;TZID=America/Sao_Paulo:20261105T211000
+SUMMARY:[SLD Dia 3/4] Módulo II: Mintermos, Mapa de Karnaugh e MUX/Decoder (Unids. 7, 8 e 9)
+DESCRIPTION:Sprint Intensivo ASD-STE100 — Avaliação II (30 pts):\n1. Bloco 1 (30m) - Unidade 7: Mintermos (Soma de Produtos) vs Maxtermos (Produto de Somas) + simplificação Pág. 5.\n2. Bloco 2 (45m) - Unidade 8 + Lab 4: Mapa de Karnaugh (colunas 00, 01, 11, 10) e Don't Care (X) no papel!\n3. Bloco 3 (25m) - Unidade 9 + Lab 5: Decodificador, Display 7-Seg, Encoder e MUX 4:1.\n4. Meta: Dominar Karnaugh de 3 e 4 variáveis no papel.
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete SLD: Dia 3 do Sprint Intensivo (Unidades 7, 8 e 9 - Karnaugh!)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sld-sprint4d-d4-20261106@sld.local
+DTSTAMP:20261102T140000Z
+DTSTART;TZID=America/Sao_Paulo:20261106T193000
+DTEND;TZID=America/Sao_Paulo:20261106T212000
+SUMMARY:[SLD Dia 4/4] Sequenciais (Flip-Flops JK/D e Contadores MOD-N) + Simulado 30 pts (Unids. 10, 11 e 12)
+DESCRIPTION:Sprint Intensivo ASD-STE100 — Avaliação II (30 pts):\n1. Bloco 1 (20m) - Unidade 10 + Lab 5: Overflow, Meio-Somador (HA) e Somador Completo (FA).\n2. Bloco 2 (25m) - Unidade 11 + Lab 6: Latches, Flip-Flops SR, JK (11=Comuta!) e D + PRE'/CLR'.\n3. Bloco 3 (25m) - Unidade 12 + Lab 6: Contadores Assíncronos vs Síncronos, MOD-6, BCD (MOD-10) e MOD-60.\n4. Bloco 4 (40m) - SIMULADO PRESENCIAL (30 PTS): Resolver as 10 questões no papel!
+BEGIN:VALARM
+TRIGGER:-PT30M
+ACTION:DISPLAY
+DESCRIPTION:Lembrete SLD: Dia 4 (Véspera) - Flip-Flops, Contadores e Simulado 30 pts!
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:sld-sprint4d-d5-20261107@sld.local
+DTSTAMP:20261102T140000Z
+DTSTART;TZID=America/Sao_Paulo:20261107T080000
+DTEND;TZID=America/Sao_Paulo:20261107T094000
+SUMMARY:[PROVA PRESENCIAL] AVALIAÇÃO II — Sistemas Lógicos Digitais (30 Pontos)
+DESCRIPTION:AVALIAÇÃO II PRESENCIAL (30 Pontos - Das 08h00 às 09h40):\n1. Às 07h15: Revisão rápida na aba 'Resumão STE-100 para Prova'.\n2. Às 08h00: Anotar no topo da prova os pesos (128, 64, 32, 16, 8, 4, 2, 1) e a ordem Gray do Mapa K (00, 01, 11, 10).\n3. Gestão de tempo: ~8 min por questão + 20 min de revisão final.
+BEGIN:VALARM
+TRIGGER:-PT45M
+ACTION:DISPLAY
+DESCRIPTION:Hoje às 08h00: AVALIAÇÃO II de Sistemas Lógicos Digitais (30 pts)!
+END:VALARM
+END:VEVENT
+END:VCALENDAR
